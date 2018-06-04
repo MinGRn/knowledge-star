@@ -182,7 +182,7 @@
 >  - POST：从客户机向服务器传送数据，在要求服务器和CGI做进一步处理时会用到POST方法。POST主要用于发送HTML文本中FORM的内容，让CGI程序处理。
 > 
 > *一个请求的例子为：*
-> GET http://networking.zju.edu.cn/zju/index.htmHTTP/1.0networking.zju.edu.cn/zju/index.htmHTTP/1.0 头信息又称为元信息，即信息的信息，利用元信息可以实现有条件的请求或应答。
+> GET `http://networking.zju.edu.cn/zju/index.htmHTTP/1.0networking.zju.edu.cn/zju/index.htmHTTP/1.0` 头信息又称为元信息，即信息的信息，利用元信息可以实现有条件的请求或应答。
 >  - 请求头：告诉服务器怎样解释本次请求，主要包括用户可以接受的数据类型、压缩方法和语言等。
 >  - 实体头：实体信息类型、长度、压缩方法、最后一次修改时间、数据有效期等。
 >  - 实体：请求或应答对象本身。

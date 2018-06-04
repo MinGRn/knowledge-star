@@ -138,25 +138,25 @@ Now using node v6.11.3 (64-bit)
 >
 同样的咱们可以下载其他版本的nodejs，这样通过命令:nvm use 版本号 比如：`nvm use 5.11.0` 就可以轻松实现版本切换了。
 >
-**注意：**切换不同的node版本以后，用管理员身份打开命令行，运行npm -g -d i windows-build-tools，以解决window中某些不能用的命令的问题
+**注意：**切换不同的node版本以后，用管理员身份打开命令行，运行 `npm -g -d i windows-build-tools` ，以解决window中某些不能用的命令的问题
 >
 **安装 cnpm**
 
 >因为npm安装插件是从国外服务器下载，受网络影响大，可能出现异常,所以可以使用淘宝开发的淘宝NPM镜像，同步频率目前为 10分钟 一次。
 >
-1.  通过 config 配置指向国内镜像源
-npm config set registry http://registry.cnpmjs.org //配置指向源
-npm info express  //下载安装第三方包
-2.  通过 npm 命令指定下载源
-npm --registry http://registry.cnpmjs.org info express
-3.  在配置文件 ~/.npmrc 文件写入源地址
-nano ~/.npmrc   //打开配置文件
-registry =https://registry.npm.taobao.org   //写入配置文件
-npm install -g cnpm --registry=https://registry.npm.taobao.org
-npm install -g cnpm --registry=http://r.cnpmjs.org
+> 1.  通过 config 配置指向国内镜像源
+> `npm config set registry http://registry.cnpmjs.org` //配置指向源
+> `npm info express`  //下载安装第三方包
+> 2.  通过 npm 命令指定下载源
+> `npm --registry http://registry.cnpmjs.org info express`
+> 3.  在配置文件 `~/.npmrc` 文件写入源地址
+> `nano ~/.npmrc`   //打开配置文件
+> `registry = https://registry.npm.taobao.org` //写入配置文件
+> `npm install -g cnpm --registry=https://registry.npm.taobao.org`
+> `npm install -g cnpm --registry=http://r.cnpmjs.org`
 三.使用node启动项目
-npm i （npm install 的简写）安装依赖时候，后面加上 -d可以看到文件安装进程和状态
-若安装文件中出现状态304且报错，直接去D:\NodeNVM\npm-cache中，将缓存文件全部删除
+> `npm i` （npm install 的简写）安装依赖时候，后面加上 `-d` 可以看到文件安装进程和状态
+若安装文件中出现状态304且报错，直接去 `D:\NodeNVM\npm-cache` 中，将缓存文件全部删除
 >
 
 -----------
