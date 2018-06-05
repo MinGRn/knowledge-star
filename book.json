@@ -1,35 +1,45 @@
 {
-  "title": "知识星球",
-  "author": "MinGRn",
-  "language": "zh-hans",
-  "plugins": [
-	"github",
-	"disqus",
-	"advanced-emoji",
- 	"tbfed-pagefooter",
-	"anchor-navigation-ex-toc",
-	"favicon"
+	"title": "知识星球",
+	"author": "MinGRn",
+	"language": "zh-hans",
+	"plugins": [
+      "github",
+	  "github-buttons",
+	  "disqus",
+	  "advanced-emoji",
+	  "tbfed-pagefooter",
+	  "anchor-navigation-ex-toc",
+	  "favicon"
   ],
   "pluginsConfig": {
-  	"github":{
-		"url": "https://github.com/MinGRn/Knowledge-Star"
+    "github":{
+      "url": "https://github.com/MinGRn/Knowledge-Star"
 	},
+    "github-buttons": {
+      "repo": "Knowledge-Star/gitbook-use",
+      "types": [
+        "star",
+        "watch",
+        "fork"
+      ],
+      "size": "small"
+    },
 	"disqus": {
-        	"shortName": "gitbookuse"
-    	},
+      "shortName": "gitbookuse"
+    },
 	"tbfed-pagefooter": {
-        	"copyright":"Copyright &copy MinGRn 2018",
-        	"modify_label": "该文件修订时间：",
-        	"modify_format": "YYYY-MM-DD HH:mm:ss"
-    	},
+      "copyright":"Copyright &copy MinGRn 2018",
+      "modify_label": "该文件修订时间：",
+      "modify_format": "YYYY-MM-DD"
+    },
 	"favicon":{
-        	"shortcut": "images/favicon.ico",
-        	"bookmark": "images/favicon.ico",
-        	"appleTouch": "assets/images/apple-touch-icon.png",
-        	"appleTouchMore": {
-            		"120x120": "assets/images/apple-touch-icon-120x120.png",
-            		"180x180": "assets/images/apple-touch-icon-180x180.png"
-       		}
-       } 
+      "shortcut": "images/favicon.ico",
+      "bookmark": "images/favicon.ico",
+      "appleTouch": "assets/images/apple-touch-icon.png",
+      "appleTouchMore": {
+        "120x120": "assets/images/apple-touch-icon-120x120.png",
+        "180x180": "assets/images/apple-touch-icon-180x180.png"
+      }
+    }
   }
 }

@@ -11,9 +11,9 @@
 
 <!-- /TOC -->
 
-### node中nvm的安装-采坑集合
+# node中nvm的安装-采坑集合
 
-#### nvm是什么
+## nvm是什么
 
 > Node版本的迭代速度很快，版本很多，不同项目对 node的依赖不同，故需要切换不同node版本
 > 
@@ -23,8 +23,8 @@
 
 > 我按nvm提供的文档来完成nvm及node多个版本的安装,因为在安装过程中遇到不少坑,特在此总结安装中遇到的各种坑
 
-#### 下载安装与使用
-##### nvm 下载
+## 下载安装与使用
+### nvm 下载
 > nvm-windows下载地址：[nvm-windows](https://github.com/coreybutler/nvm-windows)
 > 
 > ![Alt text](node中nvm的安装-采坑集合-images/NVM-Windows.png)
@@ -38,7 +38,7 @@
  +  nvm.exe
 备注：windows下要设置显示文件类型的扩展名，这样才能看到上述文件的后缀
 
-##### nvm 安装
+### nvm 安装
 >双击 install.cmd ，是以控制台形式显示的，第一下直接按回车，然后会在d盘根目录产生settings.txt，把这个文件放进刚刚解压的那个目录，然后修改settings.txt内容，改成如下：
 >
 `root: D:\NodeNVM\nvm` 
@@ -53,7 +53,7 @@
 `arch `： 电脑系统是64位就写64,32位就写32
 `proxy `： 代理
 
-##### nvm 环境变量配置
+### nvm 环境变量配置
 
 >以控制台方法执行成功的，在环境变量里会自动配置了 `NVM_HOME` 和 `NVM_SYMLINK` 。
 
@@ -72,7 +72,7 @@
 
 > `;%NVM_HOME%;%NVM_SYMLINK%;` 。
 
-##### nvm基本操作
+### nvm基本操作
 
 >打开cmd窗口输入命令：nvm -v ，查看当前nvm的版本信息。
 >
@@ -101,7 +101,7 @@
   * 表示当前正在使用的node版本号
   * 每次执行切换的时候，系统都会把 node 的可执行文件链接放到特定版本的文件上。
 
-##### 安装node
+### 安装node
 
 >第一个坑：
 >安装过node版本的,先卸载了在开始看现在的安装流程。
