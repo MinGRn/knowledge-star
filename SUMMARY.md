@@ -1,5 +1,7 @@
 # Summary
 
+This is the summary of Konwledge-Star book.
+
 * [知识星球简介](README.md)
 * [GitBook](docs/GitBook/README.md)
     + [GitBook-安装与使用](docs/GitBook/GitBook-安装与使用.md)
