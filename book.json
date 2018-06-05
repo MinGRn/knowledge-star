@@ -16,8 +16,9 @@
       "url": "https://github.com/MinGRn/Knowledge-Star"
 	},
     "github-buttons": {
-      "repo": "Knowledge-Star/gitbook-use",
+      "repo": "MinGRn/Knowledge-Star",
       "types": [
+        "Follow",
         "star",
         "watch",
         "fork"
@@ -25,11 +26,11 @@
       "size": "small"
     },
 	"disqus": {
-      "shortName": "gitbookuse"
+      "shortName": "MinGRn"
     },
 	"tbfed-pagefooter": {
       "copyright":"Copyright &copy MinGRn 2018",
-      "modify_label": "该文件修订时间：",
+      "modify_label": "最近修订时间：",
       "modify_format": "YYYY-MM-DD"
     },
 	"favicon":{
