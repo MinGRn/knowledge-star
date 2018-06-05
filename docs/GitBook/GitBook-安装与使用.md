@@ -1,24 +1,26 @@
 <!-- TOC depthFrom:1 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
-- [GitBook 安装与使用](#gitbook-安装与使用)
-	- [说明](#说明)
+* [GitBook 安装与使用](#gitbook-安装与使用)
+	+ [前言](#前言)
 		- [GitBook 是什么 ？](#gitbook-是什么-)
 		- [为什么要使用 GitBook ?](#为什么要使用-gitbook-)
 		- [GitBook 功能](#gitbook-功能)
 		- [GitBook 工具组合](#gitbook-工具组合)
 		- [GitBook 使用场景](#gitbook-使用场景)
-	- [GitBook 环境配置](#gitbook-环境配置)
+	+ [GitBook 环境配置](#gitbook-环境配置)
 		- [安装 Node.js](#安装-nodejs)
 		- [安装 GitBook](#安装-gitbook)
 		- [定义目录结构](#定义目录结构)
-- [Summary](#summary)
-	- [启动服务](#启动服务)
-
+	+ [启动服务](#启动服务)
+		- [启动服务命令](#启动服务命令)
+		- [改变默认服务端口](#改变默认服务端口)
+		- [查看页面效果](#查看页面效果)
+	+ [资料汇总](#资料汇总)
 <!-- /TOC -->
 
 # GitBook 安装与使用
 
-## 说明
+## 前言
 ### GitBook 是什么 ？
 > GitBook是一个基于 Node.js 的命令行工具，可使用 Github/Git 和 Markdown 来制作精美的电子书，GitBook 并非关于 Git 的教程。
 > GitBook 是目前最流行的开源书籍写作方案。
@@ -57,7 +59,7 @@
 
 ### 安装 Node.js
 > 因为 GitBook 是使用 Node.js 开发的，需要通过 Node.js 包管理工具 NPM 安装，所以在开始之前要先把 Nodejs 安装好。
-> 建议直接安装 Npm。通过 Npm 直接安装 Nodejs
+> 建议直接安装 Npm(如何安装请阅读**node中nvm的安装-采坑集合**)。通过 Npm 直接安装 Nodejs
 
 ### 安装 GitBook
 > 我们可以直接在 git 客户端中选择一个目录创建一个文件（可以理解为就是 git 仓库）如：
@@ -71,8 +73,8 @@
 > 该命令跟 `git init` 一个道理
 > 如果当前环境没有安装 gitbook，它会有个提示，如图
 >
-> ![gitbook-init](images/gitbook-init.png)
-
+> ![gitbook-init-fail](images/gitbook-init-fail.png)
+>
 >
 > 该提示信息告诉你 需要安装 `gitbook`，如果你已经安装过请输出 `npm uninstall -g gitbook` 命令进行卸载，然后在输入 `gitbook install -g gitbook-cli` 进行安装gitbook。
 >
@@ -105,6 +107,7 @@
 > **SUMMARY.md**
 
 > SUMMARY.md 的目录结构长什么样？ 看下面：
+
 ```
 # Summary
 
@@ -132,9 +135,14 @@ info: initialization is finished
 
 
 ## 启动服务
-> 在根目录执行命令：
+
+### 启动服务命令
+
+> - 在根目录执行命令 `gitbook serve` 命令进行启动服务
+> - 在跟目录外部执行命令 `gitbook serve booName` 命令进行启动服务
 >
-> `gitbook serve`
+> **如图**
+> ![gitbook-serve](images/gitbook-serve.png)
 >
 >  **结果**
 ```
@@ -158,8 +166,28 @@ Serving book on http://localhost:4000 # 注意浏览地址
 ```
 > 执行 gitbook serve命令后，会先编译书籍gitbook build，如果没有问题会打开一个 Web 服务器，默认监听 4000 端口。如果编译有问题，会抛出错误信息。
 
-> **查看页面效果**
+### 改变默认服务端口
+
+> 如果我们要同时启动多个 gitbook 服务的话就需要改变 gitbook 默认web端口，同时也要改变 gitbook 默认进程端口
 >
-> 在浏览器中打开 `127.0.0.1:4000` 或 `localhost:4000` 查看书籍的效果
+> - 默认web端口: 4000
+> - 默认进程端口: 35729
+>
+> **命令**：
+> `gitbook serve [bookName] --lrport pressPort --port webPort`
+>
+> 就前面的例子而言：
+> - 在根目录： `gitbook serve --lrport 35728 --port 4001`
+> - 在外部： `gitook serve Knowledge --lreport 35728 --port 4001`
+> 在浏览器中输入 `127.0.0.1:4001` 即可访问
+
+### 查看页面效果
+
+> 安装之前的操作正常启动后，在浏览器中打开 `127.0.0.1:4000` 或 `localhost:4000` 查看书籍的效果
 >
 > ![git-book-show](images/git-book-show.png)
+
+## 资料汇总
+
+> - [Jikai Zhang](http://www.zhangjikai.com/) - Project - 文档 - GitBook使用教程
+> - [GitBook Toolchain](https://toolchain.gitbook.com/)
