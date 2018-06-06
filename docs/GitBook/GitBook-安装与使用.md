@@ -108,7 +108,7 @@
 
 > SUMMARY.md 的目录结构长什么样？ 看下面：
 
-```
+```vim
 # Summary
 
 * [项目简介](README.md)
@@ -123,7 +123,8 @@
 > `gitbook init`
 >
 > 那些没有的目录和文件都会被创建
-```
+
+```vim
 info: create docs/快速开始.md
 info: create docs/环境搭建.md
 info: create docs/简单使用.md
@@ -147,8 +148,7 @@ info: initialization is finished
 >
 >  **结果**
 
-
-```
+```vim
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
 info: 7 plugins are installed
