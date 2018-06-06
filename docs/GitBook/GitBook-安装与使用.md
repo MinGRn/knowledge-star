@@ -142,13 +142,14 @@ info: initialization is finished
 > - 在跟目录外部执行命令 `gitbook serve booName` 命令进行启动服务
 >
 > **如图**
+>
 > ![gitbook-serve](images/gitbook-serve.png)
 >
 >  **结果**
+>
 ```
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
-
 info: 7 plugins are installed
 info: loading plugin "livereload"... OK
 info: loading plugin "highlight"... OK
