@@ -146,7 +146,8 @@ info: initialization is finished
 > ![gitbook-serve](images/gitbook-serve.png)
 >
 >  **结果**
->
+
+
 ```
 Live reload server started on port: 35729
 Press CTRL+C to quit ...
