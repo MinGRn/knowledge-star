@@ -189,5 +189,6 @@ Serving book on http://localhost:4000 # 注意浏览地址
 
 ## 资料汇总
 
-> - [Jikai Zhang](http://www.zhangjikai.com/) - Project - 文档 - GitBook使用教程
+> - [Jikai Zhang](http://www.zhangjikai.com/)
+> - [ChengWei's GitBook 简明教程](http://www.chengweiyang.cn/gitbook/)
 > - [GitBook Toolchain](https://toolchain.gitbook.com/)
