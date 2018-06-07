@@ -180,7 +180,7 @@ Serving book on http://localhost:4000 # 注意浏览地址
 >
 > 就前面的例子而言：
 > - 在根目录： `gitbook serve --lrport 35728 --port 4001`
-> - 在外部： `gitook serve Knowledge --lreport 35728 --port 4001`
+> - 在外部： `gitook serve Knowledge --lrport 35728 --port 4001`
 > 在浏览器中输入 `127.0.0.1:4001` 即可访问
 
 ### 查看页面效果
