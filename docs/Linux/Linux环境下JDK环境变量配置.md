@@ -50,8 +50,8 @@ mkdir jvm
 rz
 ```
 
-> **说明：** `rz` 指令是上传文件的意思，执行该命令后，在弹出框中选择要上传的文件即可。`sz fileName` 执行该命令后，是将 fileName 文件发送到本地。
-> 另外，如果提示 `unknown rz command` 则说明没有安装该指令，只需要输入如下命令安装即可：
+**说明：** `rz` 指令是上传文件的意思，执行该命令后，在弹出框中选择要上传的文件即可。`sz fileName` 执行该命令后，是将 fileName 文件发送到本地。
+另外，如果提示 `unknown rz command` 则说明没有安装该指令，只需要输入如下命令安装即可：
 ```
 # 安装 lrzsz
 yum install -y lrzsz
