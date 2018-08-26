@@ -11,15 +11,15 @@ uname -a
 
 进入 [oracle 官网](https://www.oracle.com/) 下载对应操作系统的 JDK 8 版本：
 
-<div align = center>![JDK-8](images/java/JDK-8.png)
+<div align = center>![JDK-8](images/jvm/JDK-8.png)
 
 另外，如果想下载历史版本 JDK 则需要在下载页面找到 JDK 归档栏：
 
-<div align = center>![JDK-Archive](images/java/JDK-Archive.png)
+<div align = center>![JDK-Archive](images/jvm/JDK-Archive.png)
 
 点击归档后既能看到所有 JDK 版本，点击下载即可！
 
-<div align = center>![JDK-list.png](images/java/JDK-list.png)
+<div align = center>![JDK-list.png](images/jvm/JDK-list.png)
 
 ## 登录Linux，切换到 rooot 用户
 
