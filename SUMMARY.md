@@ -23,3 +23,8 @@ This is the summary of Konwledge-Star book.
 * [Linux](docs/Linux/README.md)
     + [Linux 环境下 JDK 环境变量配置](docs/Linux/Linux环境下JDK环境变量配置.md)
     + [Linux 环境下安装MySQL](docs/Linux/Linux下安装MySQL.md)
+    
+---
+
+* [JAVA](docs/JAVA/README.md)
+    + [JAVA 小知识](docs/JAVA/Java小知识.md)
