@@ -101,3 +101,139 @@ public class RandomTest {
 |sun.io.unicode.encoding|UnicodeLittle||
 |sun.desktop|windows|操作系统|
 |sun.cpu.isalist | amd64 | |
+
+# JAVA Class 类转 Map
+
+这是一个工具类，在使用时需要保证 JDK 版本至少为 1.8。在 `transBean2Map(T clazz, String fields, Boolean isValNotNull)` 方法使用了 Lambda 表达式。
+Lambda 表达式是 1.8 的新特性，之前的版本是没有的。
+
+另外，在工具类中判断字符不为 NULL 使用的是 `commons-lang3` 依赖包。如果没有该依赖包请在 POM 依赖中引入该依赖。或者直接不使用 `commons-lang3` 工具类：
+
+`if (isValNotNull && StringUtils.isBlank((CharSequence) value))` 直接写成 `if (isValNotNull && value != null)`。
+
+工具类如下所示：
+
+```java
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * Operations clazz that transition to {@link java.util.Map}
+ * </p>
+ * If you want to use this util, please check JDK {@since 1.8} or later.
+ * The Lambda is a feature that only comes with JDK {@since 1.8}.
+ * In addition, StringUtils come from org.apache.commons.lang3, if no dependence
+ * please download or add it in pom.
+ * </p>
+ * <a href="http://mvnrepository.com/artifact/org.apache.commons/commons-lang3">
+ * download or copy commons-lang dependence
+ * </a>
+ *
+ * @author MinGRn <br> MinGRn97@gmail.com
+ * @since 1.8
+ */
+public class BeanUtils {
+
+	private BeanUtils() {
+	}
+
+	private static Logger LOGGER = LoggerFactory.getLogger(BeanUtils.class);
+
+
+	public static void main(String[] args) {
+		MoveCarCustomer moveCarCustomer = new MoveCarCustomer();
+		moveCarCustomer.setBackLinkmanName("MinGRn");
+		moveCarCustomer.setBackLinkmanPhone("199********");
+		moveCarCustomer.setBackLinkmanRelation("不明");
+		Map<String, Object> map = transBean2Map(moveCarCustomer, "updateUser", false);
+		for (String s : map.keySet()) {
+			System.out.printf("key: %s \nVal: %s", s, map.get(s) + "\n\n");
+		}
+	}
+
+
+	/**
+	 * Transition Class to Map
+	 * </p>
+	 * Use Introspector{@link java.beans.Introspector} and PropertyDescriptor{@link java.beans.PropertyDescriptor}
+	 * transition Class Object to Map{@link java.util.Map}
+	 * </p>
+	 * if parameter {@code isValNotNull} is TRUE return field only not null of class, else return all
+	 *
+	 * @param clazz class
+	 * @param isValNotNull the value is not null
+	 * @return java.util.Map
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Map<String, Object> transBean2Map(T clazz, Boolean isValNotNull) {
+		Map<String, Object> map = new HashMap<>(10);
+		try {
+			String clazzStr = "class";
+			BeanInfo beanInfo = Introspector.getBeanInfo(clazz.getClass());
+			PropertyDescriptor[] propertyDescriptors = beanInfo.getPropertyDescriptors();
+			for (PropertyDescriptor property : propertyDescriptors) {
+				String key = property.getName();
+				if (!key.equals(clazzStr)) {
+					Method getter = property.getReadMethod();
+					Object value = getter.invoke(clazz);
+					if (isValNotNull && StringUtils.isBlank((CharSequence) value)) {
+						continue;
+					}
+					map.put(key, value);
+				}
+			}
+		} catch (Exception e) {
+			LOGGER.error("BeanUtils.transBean2Map Error ====>", e);
+		}
+		return map;
+	}
+
+
+	/**
+	 * Gets the value of the required field to the map
+	 *
+	 * @param clazz class
+	 * @param fields get one or more, multiple is separated by ","
+	 * @param isValNotNull the value is not null
+	 * @since 1.8
+	 */
+	@SuppressWarnings("unchecked")
+	public static <T> Map transBean2Map(T clazz, String fields, Boolean isValNotNull) {
+		Map<String, Object> map = new HashMap<>(10);
+		Class bean = clazz.getClass();
+		Arrays.stream(bean.getDeclaredFields())
+				.filter(field -> fields.contains(field.getName()))
+				.forEach(field -> setField2Map(field, clazz, map, isValNotNull));
+		return map;
+	}
+
+	/**
+	 * set field 2 map
+	 *
+	 * @param field clazz field
+	 * @param isValNotNull 值不允许为空
+	 */
+	private static <T> void setField2Map(Field field, T clazz, Map<String, Object> map, Boolean isValNotNull) {
+		field.setAccessible(true);
+		try {
+			Object fieldValue = field.get(clazz);
+			if (isValNotNull && StringUtils.isBlank((CharSequence) fieldValue)) {
+				return;
+			}
+			map.put(field.getName(), fieldValue);
+		} catch (IllegalAccessException e) {
+			LOGGER.error("BeanUtils.transBean2Map.setMap Error ====>", e);
+		}
+	}
+}
+```
