@@ -237,3 +237,211 @@ public class BeanUtils {
 	}
 }
 ```
+
+# JAVA 根据经纬度计算两点距离
+
+在地图上计算两点之间的距离其实就是计算地球弧度距离，将用角度表示的角转换为近似相等的用弧度表示的角。
+
+首先需要获取某个地点的经纬度，这里可以借用百度地图 API 进行计算得到。
+
+## 通过百度 API 求取距离
+
+```java
+import org.apache.http.client.methods.HttpUriRequest;
+import org.apache.http.client.methods.RequestBuilder;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClientBuilder;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
+/**
+ * 百度 API 经纬度计算位置
+ * </p>
+ * 发送 GET 请求借助 httpclient,需要在 POM 中引入:
+ * <a href="http://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient"></a>
+ *
+ * @author MinGRn <br > MinGRn97@gmail.com
+ * @date 01/10/2018 15:17
+ */
+public class DistanceUtil {
+
+	/**
+	 * 百度获取位置经纬度 URL
+	 */
+	private static final String LNG_LAT_POINT_URL = "http://api.map.baidu.com/geocoder/v2/?output=json&ak=RguGdBfvanKG10lrLHtUAtka&address=";
+
+	/**
+	 * 百度Map距离求取 URL
+	 */
+	private static final String WAY_POINTS_DISTANCE_URL = "http://api.map.baidu.com/telematics/v3/distance?output=json&ak=RguGdBfvanKG10lrLHtUAtka&waypoints=";
+
+
+	/**
+	 * 获取具体位置的经纬度
+	 * </p>
+	 * 如: location = 上海市徐汇区零陵小区
+	 * result:{"status":0,"result":{"location":{"lng":121.45078363819293,"lat":31.193489388753848},"precise":1,"confidence":70,"comprehension":100,"level":"地产小区"}}
+	 *
+	 * @param location 地理位置
+	 */
+	private static void getLngAndLat(String location) {
+		try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+			HttpUriRequest uriRequest = RequestBuilder.get(LNG_LAT_POINT_URL + location).build();
+			result(httpClient, uriRequest);
+		} catch (IOException e) {
+			// TODO: 01/10/2018 IOException ...
+		}
+	}
+
+
+	/**
+	 * 计算两个坐标点的距离
+	 *
+	 * @param startLng 起点经度
+	 * @param startLat 起点纬度
+	 * @param endLng 终点经度
+	 * @param endLat 终点纬度
+	 * @return 距离（米）
+	 */
+	private static void twoLocationDistance(Double startLng, Double startLat, Double endLng, Double endLat) {
+		try (CloseableHttpClient httpClient = HttpClientBuilder.create().build()) {
+			StringBuilder builderPoint = new StringBuilder(String.valueOf(startLng))
+					.append(",").append(startLat).append(";").append(endLng).append(",").append(endLat);
+			HttpUriRequest uriRequest = RequestBuilder.get(WAY_POINTS_DISTANCE_URL + builderPoint).build();
+			result(httpClient, uriRequest);
+		} catch (IOException e) {
+			// TODO: 01/10/2018 IOException ...
+		}
+	}
+
+	private static String result(CloseableHttpClient httpClient, HttpUriRequest uriRequest) {
+		StringBuilder stringBuilder = new StringBuilder();
+		try (InputStream inputStream = httpClient.execute(uriRequest).getEntity().getContent()) {
+			String line;
+			BufferedReader br = new BufferedReader(new InputStreamReader(inputStream));
+			while ((line = br.readLine()) != null) {
+				stringBuilder.append(line);
+			}
+			System.out.println(stringBuilder.toString());
+		} catch (IOException e) {
+			// TODO: 01/10/2018 IOException ...
+		}
+		return stringBuilder.toString();
+	}
+}
+```
+
+现在进行测试：
+```java
+public static void main(String[] args){
+  getLngAndLat("上海市徐汇区零陵小区");
+}
+```
+
+输出结果为：
+```json
+result:{"status":0,"result":{"location":{"lng":121.45078363819293,"lat":31.193489388753848},"precise":1,"confidence":70,"comprehension":100,"level":"地产小区"}}
+```
+
+这样就可以得到具体某个位置的经纬度了，得到两个地区的经纬度后调用 `twoLocationDistance(Double startLng, Double startLat, Double endLng, Double endLat)` 方法来获取距离信息：
+```java
+public static void main(String[] args){
+  twoLocationDistance(121.455244, 31.234076, 121.488301, 31.237534);
+}
+```
+
+可以看到具体数据结果为：`{"status":"Success","results":[3166.3643236737]}`。说明两点距离是 3166 米。
+
+## 通过弧度角进行求取距离
+
+现在来看下怎么自己通过计算地球弧度距离，直接看如下这个工具类：
+
+```java
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
+/**
+ * 根据圆周率计算两点地图经纬度距离
+ * </p>
+ *
+ * @author MinGRn <br > MinGRn97@gmail.com
+ */
+public class GoogleMapHelper {
+
+	/**
+	 * 地球半径(km)
+	 */
+	private static final double EARTH_RADIUS = 6378.137;
+
+	/**
+	 * 等同于 Math.toRadians(),将用角度表示的角转换为近似相等的用弧度表示的角
+	 * </p>
+	 * JS 没有 Math.toRadians(),如在 JS 直接使用该方法即可。
+	 * eg:java
+	 * Math.toRadians(startLat);
+	 * eg:js
+	 * radians(startLat)
+	 *
+	 * @param angle 角度
+	 */
+	private static double radians(double angle) {
+		return angle * Math.PI / 180.0;
+	}
+
+	/**
+	 * 计算两个坐标点的距离
+	 * </p>
+	 * 距离四舍五入保留一位小数,单位KM
+	 *
+	 * @param startLng 起点经度
+	 * @param startLat 起点纬度
+	 * @param endLng 终点经度
+	 * @param endLat 终点纬度
+	 * @return 距离（千米）
+	 */
+	private static double twoLocationDistance(double startLng, double startLat, double endLng, double endLat) {
+		double startRadLat = Math.toRadians(startLat), endRadLat = Math.toRadians(endLat);
+		double radLatDiff = startRadLat - endRadLat, radLngDiff = Math.toRadians(startLng) - Math.toRadians(endLng);
+
+		double distance = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(radLatDiff / 2), 2) +
+				Math.cos(startRadLat) * Math.cos(endRadLat) * Math.pow(Math.sin(radLngDiff / 2), 2)));
+
+		distance = distance * EARTH_RADIUS;
+		//distance = Math.round(distance * 10000) / 10000;
+		//距离四舍五入保留一位小数
+		distance = new BigDecimal(distance).setScale(1, RoundingMode.HALF_UP).doubleValue();
+		return distance;
+	}
+}
+```
+
+进行测试：
+```java
+public static void main(String[] args) {
+	long startTime = System.currentTimeMillis();
+	System.out.println("耗时：" + (System.currentTimeMillis() - startTime) + "毫秒");
+	double dist = twoLocationDistance(121.455244, 31.234076, 121.488301, 31.237534);
+	System.out.println("两点相距：" + dist + "千米");
+}
+```
+
+可以看到输出结果为：`耗时：0毫秒 两点相距：3.2千米`。可以看到两个结果相同，只是这里进行了四舍五入处理。所以，计算两个经纬度的距离可以直接使用该工具类进行计算。
+
+另外，如果通过调用百度 API 进行求取需要发送 GET 请求，这里借助的工具是 `httpclient` 可以在 MAVEN 中央仓库进行下载:
+
+```xml
+<dependency>
+    <groupId>org.apache.httpcomponents</groupId>
+    <artifactId>httpclient</artifactId>
+    <version>4.5.6</version>
+</dependency>
+```
+
+参看资料：
+- [坐标拾取系统](http://api.map.baidu.com/lbsapi/getpoint/index.html) 
+- [经纬度距离计算](http://www.hhlink.com/%E7%BB%8F%E7%BA%AC%E5%BA%A6) 
+- [用百度地图api计算两个地方的距离](https://blog.csdn.net/JackRen_Developer/article/details/72859630) 
+- [谷歌地图计算两经纬度坐标点的距离](http://happyqing.iteye.com/blog/2236103)
