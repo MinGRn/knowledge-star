@@ -445,3 +445,55 @@ public static void main(String[] args) {
 - [经纬度距离计算](http://www.hhlink.com/%E7%BB%8F%E7%BA%AC%E5%BA%A6) 
 - [用百度地图api计算两个地方的距离](https://blog.csdn.net/JackRen_Developer/article/details/72859630) 
 - [谷歌地图计算两经纬度坐标点的距离](http://happyqing.iteye.com/blog/2236103)
+
+# JAVA 抢红包算法
+
+```java
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/**
+ * 抢红包
+ * </p>
+ * <a href="https://juejin.im/post/5af80310f265da0b8636585e">参考</p>
+ *
+ * @author MinGRn <br > MinGRn97@gmail.com
+ * @date 10/10/2018 09:48
+ */
+public class DivideRedPackage {
+
+	/**
+	 * 发红包算法,金额参数以分为单位
+	 */
+	private static List<Integer> divideRedPackage(Integer totalAmount, Integer totalPeopleNum) {
+		List<Integer> amountList = new ArrayList<>();
+		Integer restAmount = totalAmount;
+		Integer restPeopleNum = totalPeopleNum;
+		Random random = new Random();
+		for (int i = 0; i < totalPeopleNum - 1; i++) {
+			/*
+			 *随机范围：[1，剩余人均金额的两倍),左闭右开
+			 */
+			int amount = random.nextInt(restAmount / restPeopleNum * 2 - 1) + 1;
+			restAmount -= amount;
+			restPeopleNum--;
+			amountList.add(amount);
+		}
+		amountList.add(restAmount);
+		return amountList;
+	}
+
+
+	public static void main(String[] args) {
+		List<Integer> amountList = divideRedPackage(5000, 30);
+		for (Integer amount : amountList) {
+			System.out.println("抢到金额：" + new BigDecimal(amount).divide(new BigDecimal(100)));
+		}
+	}
+}
+```
+
+参考: 
+- [漫画：如何实现抢红包算法?](https://juejin.im/post/5af80310f265da0b8636585e)
