@@ -31,4 +31,5 @@ This is the summary of Konwledge-Star book.
 ---
 
 * [JAVA](docs/JAVA/README.md)
-    + [JAVA 小知识](docs/JAVA/Java小知识.md)
+    + [杂谈](docs/JAVA/大杂烩.md)
+    + [流管理](docs/JAVA/流管理.md)
