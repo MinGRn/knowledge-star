@@ -33,3 +33,8 @@ This is the summary of Konwledge-Star book.
 * [JAVA](docs/JAVA/README.md)
     + [杂谈](docs/JAVA/大杂烩.md)
     + [流管理](docs/JAVA/流管理.md)
+
+---
+
+* [MySQL](docs/MySQL/README.md)
+    + [MySQL 配置文件设置](docs/MySQL/mysql-config-set.md)
