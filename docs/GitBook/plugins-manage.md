@@ -411,7 +411,7 @@ Insert markdown content here (you should start with h3 if you use heading).
 
 ## local-video
 
-使用Video.js 播放本地视频
+使用 Video.js 播放视频
 
 [插件地址](https://plugins.gitbook.com/plugin/local-video)
 
@@ -455,3 +455,5 @@ Insert markdown content here (you should start with h3 if you use heading).
   </p>
   </video>
 {% endraw %}
+
+- 原创：[菌子笑笑](https://space.bilibili.com/12504858)
