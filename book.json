@@ -3,44 +3,56 @@
 	"author": "MinGRn",
 	"language": "zh-hans",
 	"plugins": [
-      "github",
-	  "github-buttons",
-	  "disqus",
-	  "advanced-emoji",
-	  "tbfed-pagefooter",
-	  "anchor-navigation-ex-toc",
-	  "favicon"
-  ],
-  "pluginsConfig": {
-    "github":{
-      "url": "https://github.com/MinGRn/Knowledge-Star"
-	},
-    "github-buttons": {
-      "repo": "MinGRn/Knowledge-Star",
-      "types": [
-        "Follow",
-        "star",
-        "watch",
-        "fork"
-      ],
-      "size": "small"
-    },
-	"disqus": {
-      "shortName": "mingrn"
-    },
-	"tbfed-pagefooter": {
-      "copyright":"Copyright &copy MinGRn 2018",
-      "modify_label": "最近修订时间：",
-      "modify_format": "YYYY-MM-DD"
-    },
-	"favicon":{
-      "shortcut": "images/favicon.ico",
-      "bookmark": "images/favicon.ico",
-      "appleTouch": "assets/images/apple-touch-icon.png",
-      "appleTouchMore": {
-        "120x120": "assets/images/apple-touch-icon-120x120.png",
-        "180x180": "assets/images/apple-touch-icon-180x180.png"
-      }
-    }
-  }
+		"github",
+		"github-buttons",
+		"advanced-emoji",
+		"tbfed-pagefooter",
+		"anchor-navigation-ex",
+		"favicon",
+		"copy-code-button",
+		"alerts",
+		"theme-default",
+		"-lunr", 
+		"-search", 
+		"search-plus",
+		"splitter"
+	],
+	"pluginsConfig": {
+		"github":{
+			"url": "https://github.com/MinGRn/Knowledge-Star"
+		},
+		"github-buttons": {
+			"repo": "MinGRn/Knowledge-Star",
+			"types": [
+				"Follow", 
+				"star",
+				"watch",
+				"fork"
+			],
+			"size": "small"
+		},
+		"tbfed-pagefooter": {
+			"copyright":"Copyright &copy MinGRn 2018",
+			"modify_label": "最近修订时间：",
+			"modify_format": "YYYY-MM-DD"
+		},
+		"anchor-navigation-ex": {
+			"showLevel": true,
+			"multipleH1": true,
+			"showGoTop": true,
+			"associatedWithSummary": true
+		},
+		"favicon":{
+			"shortcut": "images/favicon.ico",
+			"bookmark": "images/favicon.ico",
+			"appleTouch": "assets/images/apple-touch-icon.png",
+			"appleTouchMore": {
+				"120x120": "assets/images/apple-touch-icon-120x120.png",
+				"180x180": "assets/images/apple-touch-icon-180x180.png"
+			}
+		},
+		"theme-default":{
+			"showLevel": true
+		}
+	}
 }

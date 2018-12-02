@@ -382,3 +382,10 @@ mysql> select * from sys_role;
 ```
 
 可以看到数据被正常插入，如果编码集设置为 `utf-8` 在插入是会提示异常。
+
+
+---
+
+* 参考
+
+  - [GitHub](https://github.com/jaywcjlove/mysql-tutorial/blob/master/chapter2/2.5.md)
