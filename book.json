@@ -1,21 +1,22 @@
 {
 	"title": "知识星球",
 	"author": "MinGRn",
+	"version": "3.2.3",
 	"language": "zh-hans",
 	"plugins": [
-		"github",
-		"github-buttons",
-		"advanced-emoji",
-		"tbfed-pagefooter",
-		"anchor-navigation-ex",
-		"favicon",
-		"copy-code-button",
-		"alerts",
-		"theme-default",
-		"-lunr", 
-		"-search", 
-		"search-plus",
-		"splitter"
+		"github@^2.0.0",
+		"github-buttons@^3.0.0",
+		"advanced-emoji@^0.2.2",
+		"tbfed-pagefooter@^0.0.1",
+		"anchor-navigation-ex@^1.0.13",
+		"favicon@^0.0.2",
+		"alerts@^0.2.0",
+		"theme-default@^1.0.7",
+		"-lunr",
+		"-search",
+		"search-plus@^1.0.3",
+		"sectionx@^3.1.0",
+		"chart@^0.2.1"
 	],
 	"pluginsConfig": {
 		"github":{
@@ -53,6 +54,12 @@
 		},
 		"theme-default":{
 			"showLevel": true
+		},
+		"sectionx": {
+			"tag": "b"
+		},
+		"chart": {
+			"type": "highcharts"
 		}
 	}
 }
