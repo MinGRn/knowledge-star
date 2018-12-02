@@ -1,0 +1,17 @@
+/* CSS for website */
+
+/**
+ * summmary style 
+ */
+.book-summary ul.summary li.header {
+	font-weight: bolder;
+}
+
+.book-summary ul.summary li a{
+	text-indent: 1em;
+}
+
+.book-summary ul.summary li a:hover{
+	color: #008cff;
+}
+
