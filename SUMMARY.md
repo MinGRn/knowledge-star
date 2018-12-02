@@ -40,9 +40,9 @@ This is the summary of Konwledge-Star book.
 
 ### Linux
 
-* [Linux 简介](docs/Linux/README.md)
-* [Linux 环境下 JDK 环境变量配置](docs/Linux/Linux环境下JDK环境变量配置.md)
-* [Linux 环境下安装MySQL](docs/Linux/Linux下安装MySQL.md)
+* [简介](docs/Linux/README.md)
+* [JDK 环境配置](docs/Linux/Linux环境下JDK环境变量配置.md)
+* [MySQL 安装](docs/Linux/Linux下安装MySQL.md)
 
 ----
 
@@ -56,5 +56,5 @@ This is the summary of Konwledge-Star book.
 
 ### MySQL
 
-* [MySQL 简介](docs/MySQL/README.md)
-* [MySQL 配置文件设置](docs/MySQL/mysql-config-set.md)
+* [简介](docs/MySQL/README.md)
+* [配置文件](docs/MySQL/mysql-config-set.md)
