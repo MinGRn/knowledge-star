@@ -411,7 +411,7 @@ Insert markdown content here (you should start with h3 if you use heading).
 
 ## local-video
 
-使用 html5 播放视频
+使用Video.js 播放本地视频
 
 [插件地址](https://plugins.gitbook.com/plugin/local-video)
 
@@ -425,7 +425,7 @@ Insert markdown content here (you should start with h3 if you use heading).
 
 ```
 {% raw %}
-  <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="./images/cover.jpg" data-setup='{"aspectRatio":"16:9"}'>
+  <video id="my-video" class="video-js" controls preload="auto" width="100%" poster=".(**).jpg" data-setup='{"aspectRatio":"16:9"}'>
   <source src=".(**).mp4" type='video/mp4'>
   <source src=".(**).flv" type='video/flv'>
   <p class="vjs-no-js">
