@@ -408,3 +408,50 @@ Insert markdown content here (you should start with h3 if you use heading).
     }]
 }
 {% endchart %}
+
+## local-video
+
+使用 html5 播放视频
+
+[插件地址](https://plugins.gitbook.com/plugin/local-video)
+
+```json
+{
+    plugins: ["local-video"]
+}
+```
+
+使用示例：为了使视频可以自适应，我们指定视频的 `width` 为100%，并设置宽高比为16:9，如下面所示:
+
+```
+{% raw %}
+  <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="./images/cover.jpg" data-setup='{"aspectRatio":"16:9"}'>
+  <source src=".(**).mp4" type='video/mp4'>
+  <source src=".(**).flv" type='video/flv'>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+  </video>
+{% endraw %}
+```
+
+另外我们还要再配置下css，即在website.css中加入
+
+```js
+.video-js {
+    width:100%;
+    height: 100%;
+}
+```
+
+{% raw %}
+  <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="./images/cover.jpg" data-setup='{"aspectRatio":"16:9"}'>
+  <source src="./videos/【国漫古风虐向】下一世，不知可否再相见.mp4" type='video/mp4'>
+  <source src="./videos/【国漫古风虐向】下一世，不知可否再相见.flv" type='video/flv'>
+  <p class="vjs-no-js">
+    To view this video please enable JavaScript, and consider upgrading to a web browser that
+    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+  </p>
+  </video>
+{% endraw %}

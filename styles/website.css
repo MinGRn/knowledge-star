@@ -1,8 +1,6 @@
 /* CSS for website */
 
-/**
- * summmary style 
- */
+/* summmary style */
 .book-summary ul.summary li.header {
 	font-weight: bolder;
 }
@@ -14,4 +12,3 @@
 .book-summary ul.summary li a:hover{
 	color: #008cff;
 }
-
