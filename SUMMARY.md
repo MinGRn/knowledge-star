@@ -17,8 +17,10 @@ This is the summary of Konwledge-Star book.
 
 ### Git
 
-* [Git 简介](docs/Git/README.md)
-* [Git 安装与使用](docs/Git/Git-安装与使用.md)
+* [简介](docs/Git/README.md)
+* [安装与使用](docs/Git/安装与使用.md)
+* [命令行](docs/Git/命令行.md)
+* [常见问题](docs/Git/常见问题.md)
 
 ----
 
