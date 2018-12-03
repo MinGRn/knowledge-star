@@ -10,9 +10,10 @@ This is the summary of Konwledge-Star book.
 
 ### GitBook
 
-* [简介](docs/GitBook/README.md)
-* [安装与使用](docs/GitBook/install-and-use.md)
-* [插件管理](docs/GitBook/plugins-manage.md)    
+* [instroduction](docs/GitBook/README.md)
+* [install and use](docs/GitBook/install-and-use.md)
+* [book.json](docs/GitBook/book.json-config.md)
+* [plug-ins](docs/GitBook/plugins-manage.md)
 ----
 
 ### Git
