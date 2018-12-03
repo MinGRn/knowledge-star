@@ -446,7 +446,7 @@ Insert markdown content here (you should start with h3 if you use heading).
 ```
 
 {% raw %}
-  <video id="my-video" class="video-js" controls preload="auto" width="100%" poster="./images/cover.jpg" data-setup='{"aspectRatio":"16:9"}'>
+  <video id="my-video" class="video-js" controls preload="auto" poster="./images/cover.jpg" data-setup='{"aspectRatio":"16:9"}'>
   <source src="./videos/【国漫古风虐向】下一世，不知可否再相见.mp4" type='video/mp4'>
   <source src="./videos/【国漫古风虐向】下一世，不知可否再相见.flv" type='video/flv'>
   <p class="vjs-no-js">
