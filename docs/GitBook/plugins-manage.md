@@ -456,4 +456,58 @@ Insert markdown content here (you should start with h3 if you use heading).
   </video>
 {% endraw %}
 
-- 原创：[菌子笑笑](https://space.bilibili.com/12504858)
+
+- 视频原创：[菌子笑笑](https://space.bilibili.com/12504858)
+
+
+## emphasize
+
+为文字加上底色
+
+[插件地址](https://plugins.gitbook.com/plugin/emphasize)
+
+```json
+{
+    "plugins": ["emphasize"]
+}
+```
+
+使用示例：
+
+```
+This text is {% em %}highlighted !{% endem %}
+
+This text is {% em %}highlighted with **markdown**!{% endem %}
+
+This text is {% em type="green" %}highlighted in green!{% endem %}
+
+This text is {% em type="red" %}highlighted in red!{% endem %}
+
+This text is {% em color="#ff0000" %}highlighted with a custom color!{% endem %}
+```
+
+This text is {% em %}highlighted !{% endem %}
+
+This text is {% em %}highlighted with **markdown**!{% endem %}
+
+This text is {% em type="green" %}highlighted in green!{% endem %}
+
+This text is {% em type="red" %}highlighted in red!{% endem %}
+
+This text is {% em color="#ff0000" %}highlighted with a custom color!{% endem %}
+
+## expandable-chapters
+
+使左侧目录可折叠
+
+[插件地址](https://plugins.gitbook.com/plugin/expandable-menu)
+
+```json
+{
+    plugins: ["expandable-chapters"]
+}
+```
+
+使用示例：
+
+![expandable-chapters.png](images/expandable-chapters.png)
