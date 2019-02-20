@@ -57,7 +57,7 @@ GitBook 是目前最流行的开源书籍写作方案。
 
 ![gitbook-init-fail](images/gitbook-init-fail.png)
 
-该提示信息告诉你 需要安装 `gitbook`，如果你已经安装过请输出 `npm uninstall -g gitbook` 命令进行卸载，然后在输入 `gitbook install -g gitbook-cli` 进行安装gitbook。
+该提示信息告诉你 需要安装 `gitbook`，如果你已经安装过请输出 `npm uninstall -g gitbook` 命令进行卸载，然后在输入 `npm install -g gitbook-cli` 进行安装gitbook。
 
 我这里已经安装了，但是不对，所以先卸载：
 
